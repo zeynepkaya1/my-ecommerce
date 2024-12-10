@@ -2,8 +2,13 @@
 
 <template>
   <div>
-    <header>
-      <h1 class="text-center text-3xl font-bold">My E-Commerce App</h1>
+    <header
+      class="flex justify-between items-center p-4 bg-gray-800 text-white"
+    >
+      <nav class="p-4 bg-gray-800 text-white">
+        <router-link to="/" class="mr-4">Home</router-link>
+        <router-link to="/cart">Cart</router-link>
+      </nav>
     </header>
 
     <router-view></router-view>
@@ -11,6 +16,15 @@
 </template>
 
 <style scoped>
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
