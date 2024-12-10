@@ -7,12 +7,12 @@
           v-model="searchQuery"
           type="text"
           placeholder="Search products..."
-          class="w-full p-2 pl-10 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full p-2 pl-10 border border-teal-900 rounded-full focus:outline-none focus:ring-2 focus:ring-teal-900 bg-transparent text-black placeholder-black"
         />
         <!-- Search Icon -->
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="absolute top-1/2 left-2 transform -translate-y-1/2 w-5 h-5 text-gray-500"
+          class="absolute top-1/2 left-2 transform -translate-y-1/2 w-5 h-5 text-black"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -28,28 +28,38 @@
     </div>
 
     <!-- Product Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-6">
       <div
         v-for="product in filteredProducts"
         :key="product.id"
-        class="border p-4 rounded-lg"
+        class="bg-white shadow-xl border-teal p-6 rounded-lg flex flex-col justify-between h-full"
       >
-        <h2 class="text-lg font-bold">{{ product.name }}</h2>
-        <p class="text-sm text-gray-500">{{ product.details.description }}</p>
-        <p class="text-xl font-semibold">
-          €{{ product.details.price.toFixed(2) }}
-        </p>
-        <router-link :to="'/product/' + product.id">
-          <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4">
-            View Details
+        <div>
+          <h2 class="text-lg font-bold">{{ product.name }}</h2>
+          <p class="text-sm text-gray-500 mt-2">
+            {{ product.details.description }}
+          </p>
+          <p class="text-xl font-semibold mt-2">
+            € {{ product.details.price.toFixed(2) }}
+          </p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mt-4 flex justify-evenly">
+          <router-link :to="'/product/' + product.id">
+            <button
+              class="bg-teal-800 text-white px-6 py-3 rounded-full shadow-xl hover:shadow-2xl transition-transform transform hover:scale-105"
+            >
+              View Details
+            </button>
+          </router-link>
+          <button
+            @click="addToCart(product)"
+            class="bg-orange-800 text-white px-6 py-3 rounded-full shadow-xl hover:shadow-2xl transition-transform transform hover:scale-105"
+          >
+            Add to Cart
           </button>
-        </router-link>
-        <button
-          @click="addToCart(product)"
-          class="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-        >
-          Add to Cart
-        </button>
+        </div>
       </div>
     </div>
   </div>
@@ -90,12 +100,8 @@ input {
   padding-right: 2rem;
 }
 
-input:focus {
-  border-color: #2563eb;
-}
-
 input::placeholder {
-  color: #aaa;
+  color: #000;
 }
 
 svg {

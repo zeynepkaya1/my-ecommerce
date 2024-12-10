@@ -1,12 +1,12 @@
 <template>
   <nav
-    class="fixed top-0 left-0 w-full flex items-center justify-between p-4 bg-gray-800 shadow-md z-50"
+    class="fixed top-0 left-0 w-full flex items-center justify-between p-4 bg-teal-900 shadow-md z-50"
   >
     <!-- Left: Home Link -->
     <div class="px-9 text-xl font-semibold">
       <router-link
         to="/"
-        class="text-white hover:text-blue-500 transition-colors duration-300"
+        class="text-white hover:text-orange-800 transition-colors duration-300"
         >Home</router-link
       >
     </div>
@@ -15,7 +15,7 @@
     <div class="px-9 relative">
       <router-link
         to="/cart"
-        class="flex items-center text-white hover:text-blue-500 transition-colors duration-300"
+        class="flex items-center text-white hover:text-orange-800 transition-colors duration-300"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
