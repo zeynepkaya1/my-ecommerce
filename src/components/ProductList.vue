@@ -10,6 +10,11 @@
       <p class="text-xl font-semibold">
         {{ product.details.price }}
       </p>
+      <router-link :to="'/product/' + product.id">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded mt-4">
+          View Details
+        </button>
+      </router-link>
       <button
         @click="addToCart(product)"
         class="bg-blue-500 text-white px-4 py-2 rounded mt-4"
