@@ -8,7 +8,9 @@ export const useCartStore = defineStore("cart", {
       details: any;
       quantity: number;
     }[],
+    cartTotal: 0,
   }),
+
   actions: {
     addProductToCart(product: any) {
       const existingItem = this.cartItems.find(
@@ -20,13 +22,43 @@ export const useCartStore = defineStore("cart", {
       } else {
         this.cartItems.push({ ...product, quantity: 1 });
       }
+      this.calculateCartTotal();
     },
+
     removeProductFromCart(productId: string) {
       this.cartItems = this.cartItems.filter((item) => item.id !== productId);
+      this.calculateCartTotal();
+    },
+
+    // Update product quantity
+    updateProductQuantity(productId: string, delta: number) {
+      const product = this.cartItems.find((item) => item.id === productId);
+
+      if (product) {
+        product.quantity += delta;
+
+        if (product.quantity < 1) {
+          this.cartItems = this.cartItems.filter(
+            (item) => item.id !== productId
+          );
+        }
+
+        this.calculateCartTotal();
+      }
+    },
+
+    // Recalculate cart total
+    calculateCartTotal() {
+      this.cartTotal = this.cartItems.reduce(
+        (total, item) => total + item.details.price * item.quantity,
+        0
+      );
     },
   },
+
+  // To access the cart total dynamically
   getters: {
-    cartTotal(): number {
+    cartTotalAmount(): number {
       return this.cartItems.reduce(
         (total, item) => total + item.details.price * item.quantity,
         0
