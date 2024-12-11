@@ -9,6 +9,15 @@ export const useCartStore = defineStore("cart", {
       quantity: number;
     }[],
     cartTotal: 0,
+    receipt: null as {
+      receipt: Array<{
+        name: string;
+        quantity: number;
+        price: number;
+        total: string;
+      }>;
+      total: string;
+    } | null,
   }),
 
   actions: {
@@ -53,6 +62,23 @@ export const useCartStore = defineStore("cart", {
         (total, item) => total + item.details.price * item.quantity,
         0
       );
+    },
+
+    clearCart() {
+      this.cartItems = [];
+      this.cartTotal = 0;
+    },
+
+    setReceipt(receiptData: {
+      receipt: Array<{
+        name: string;
+        quantity: number;
+        price: number;
+        total: string;
+      }>;
+      total: string;
+    }) {
+      this.receipt = receiptData;
     },
   },
 

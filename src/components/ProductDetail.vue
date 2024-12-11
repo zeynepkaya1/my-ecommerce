@@ -6,7 +6,7 @@
     <!-- Card Layout -->
     <div class="flex flex-col md:flex-row gap-6 pt-4">
       <!-- Left Section: Product Details -->
-      <div class="flex-1">
+      <div class="flex-1 text-left">
         <h2 class="text-2xl font-bold text-black-800">{{ product.name }}</h2>
         <p class="text-gray-600 mt-2">{{ product.details.description }}</p>
         <p class="text-xl font-semibold text-black-700 mt-4">
@@ -15,7 +15,7 @@
       </div>
 
       <!-- Right Section: Additional Info -->
-      <div class="flex-1">
+      <div class="flex-1 text-left">
         <p class="text-gray-800">
           <strong>Company:</strong> {{ product.details.company }}
         </p>
@@ -84,5 +84,6 @@ function goBack() {
 .product-detail {
   max-width: 900px;
   margin-top: 2rem;
+  text-align: left;
 }
 </style>

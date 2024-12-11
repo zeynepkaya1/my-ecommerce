@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed top-0 left-0 w-full flex items-center justify-between p-4 bg-teal-900 shadow-md z-50"
+    class="fixed top-0 left-0 w-full flex items-center justify-between p-4 bg-teal-800 shadow-md z-50"
   >
     <!-- Left: Home Link -->
     <div class="px-9 text-xl font-semibold">
