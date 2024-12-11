@@ -69,6 +69,7 @@ export const useCartStore = defineStore("cart", {
       this.cartTotal = 0;
     },
 
+    // Set receipt data (non-reactive)
     setReceipt(receiptData: {
       receipt: Array<{
         name: string;

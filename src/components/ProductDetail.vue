@@ -67,7 +67,7 @@ const route = useRoute();
 const router = useRouter();
 const productId = route.params.id as string;
 
-// Find the product based on the ID
+// Find the product based on the ID from route
 const product = productsData.find((p) => p.id === productId);
 
 function addToCart(product: any) {

@@ -11,10 +11,10 @@ import CheckoutPage from "./components/CheckoutPage.vue";
 
 // Define the routes
 const routes = [
-  { path: "/", component: ProductList },
+  { path: "/", component: ProductList, name: "Home" },
   { path: "/product/:id", component: ProductDetail, name: "ProductDetail" },
-  { path: "/cart", component: CartPage, name: "CartPage" },
-  { path: "/checkout", component: CheckoutPage, name: "CheckoutPage" },
+  { path: "/cart", component: CartPage, name: "Cart" },
+  { path: "/checkout", component: CheckoutPage, name: "Checkout" },
 ];
 
 // Create the router instance

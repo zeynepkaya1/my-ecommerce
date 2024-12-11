@@ -54,13 +54,15 @@
 
 <script setup lang="ts">
 import { useCartStore } from "../store/cartStore";
-import { storeToRefs } from "pinia";
 
 const cartStore = useCartStore();
-const { receipt } = storeToRefs(cartStore);
 
-const receiptItems = receipt.value?.receipt || [];
-const receiptTotal = receipt.value?.total || "0.00";
+// Directly access the receipt property (non-reactive) without using storeToRefs
+// Because it is only created once and does not change
+const receipt = cartStore.receipt;
+
+const receiptItems = receipt?.receipt || [];
+const receiptTotal = receipt?.total || "0.00";
 </script>
 
 <style scoped>

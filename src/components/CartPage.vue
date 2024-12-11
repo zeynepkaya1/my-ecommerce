@@ -84,6 +84,8 @@ import { storeToRefs } from "pinia";
 
 const router = useRouter();
 const cartStore = useCartStore();
+
+// Get values from Pinia store individually (reactive)
 const { cartItems, cartTotal } = storeToRefs(cartStore);
 
 function increaseQuantity(productId: string) {
@@ -99,6 +101,7 @@ function removeFromCart(productId: string) {
 }
 
 function proceedToCheckout() {
+  // Create receipt value
   const receipt = cartItems.value.map((item) => ({
     name: item.name,
     quantity: item.quantity,
